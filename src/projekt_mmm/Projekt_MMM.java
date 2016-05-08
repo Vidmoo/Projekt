@@ -60,7 +60,7 @@ public class Projekt_MMM extends Okno {
         else return false;
     }
     
-    public double pobudzenie(int rodzaj, double amplituda, double okres, double t, double T, double i){
+    public double pobudzenie(int rodzaj, double amplituda, double okres, double t, double T, double i, double x){
         double pobudzenie = 0;
         
         switch(rodzaj){
@@ -68,7 +68,7 @@ public class Projekt_MMM extends Okno {
                     break;
             case 1: pobudzenie = trojkat(amplituda,okres, t, T);
                     break;
-            case 2: pobudzenie = sinusoida(amplituda,okres, t, T);
+            case 2: pobudzenie = sinusoida(amplituda,okres, t, T, x);
                     break;
         }
         
@@ -89,17 +89,18 @@ public class Projekt_MMM extends Okno {
     }
     
     public double trojkat(double amplituda, double okres, double t, double T){
-        double tr = 0;
+        double tr=0;
         
-        //Do wypełnienia
+       
         return tr;
     }
     
-    public double sinusoida(double amplituda, double okres, double t, double T){
-        double s = 0;
-        
-        //Do wypełnienia
-        return s;
+    public double sinusoida(double amplituda, double okres, double t, double T,double x){
+        double s;
+        for(int i=0;i<okres+1; i++)
+        x=Math.PI*i/(3600*180);
+        s=amplituda*Math.sin(x);
+       return s;
     }
     
     public void calkowanie(double A1, double A2, double S1, double S2, double H1, double H2, double t, double T, int rodzaj_pob, double amplituda_pob, double okres_pob, int rodzaj_metody){
