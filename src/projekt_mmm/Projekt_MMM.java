@@ -89,16 +89,19 @@ public class Projekt_MMM extends Okno {
     }
     
     public double trojkat(double amplituda, double okres, double t, double T){
-        double tr=0;
-        
+        double tr;
+        for(int k=1; k<okres/T; k++)
+        if(t> k*0.25*T+1 & t<k*0.75*T+1)
+        {tr= ;}
+        else
+        {tr=t*4*amplituda/T/T;}
        
         return tr;
     }
     
     public double sinusoida(double amplituda, double okres, double t, double T,double x){
         double s;
-        for(int i=0;i<okres+1; i++)
-        x=Math.PI*i/(3600*180);
+        x=Math.PI*t/(3600*180);
         s=amplituda*Math.sin(x);
        return s;
     }
