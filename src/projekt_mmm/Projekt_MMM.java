@@ -60,15 +60,15 @@ public class Projekt_MMM extends Okno {
         else return false;
     }
     
-    public double pobudzenie(int rodzaj, double amplituda, double okres, double t, double T, double i, double x){
+    public double pobudzenie(int rodzaj, double amplituda, double okres, double t, double T, double i){
         double pobudzenie = 0;
         
         switch(rodzaj){
-            case 0: pobudzenie = prostokat(amplituda,okres, t, T,i);
+            case 0: pobudzenie = prostokat(amplituda,okres, t, T, i);
                     break;
-            case 1: pobudzenie = trojkat(amplituda,okres, t, T);
+            case 1: pobudzenie = trojkat(amplituda,okres, t, T, i);
                     break;
-            case 2: pobudzenie = sinusoida(amplituda,okres, t, T, x);
+            case 2: pobudzenie = sinusoida(amplituda,okres, t, T, i);
                     break;
         }
         
@@ -88,21 +88,19 @@ public class Projekt_MMM extends Okno {
         return p;
     }
     
-    public double trojkat(double amplituda, double okres, double t, double T){
+    public double trojkat(double amplituda, double okres, double t, double T, double i){
         double tr;
-        for(int k=1; k<okres/T; k++)
-        if(t> k*0.25*T+1 & t<k*0.75*T+1)
-        {tr= ;}
-        else
-        {tr=t*4*amplituda/T/T;}
-       
+        int cykl = (int) (i/(okres/T) );
+        if(i<=((okres/2*T)+ (cykl)*(okres/(T))) & i >= cykl*(okres/T))
+        tr=((amplituda*2*(i-cykl*okres)*T)/okres); 
+        else 
+        tr=(amplituda*2-((amplituda*2*(i-cykl*okres)*T)/okres));
         return tr;
     }
     
-    public double sinusoida(double amplituda, double okres, double t, double T,double x){
+    public double sinusoida(double amplituda, double okres, double t, double T, double i){
         double s;
-        x=Math.PI*t/(3600*180);
-        s=amplituda*Math.sin(x);
+         s =sin(2*PI * i * T /okres)+amplituda;
        return s;
     }
     
