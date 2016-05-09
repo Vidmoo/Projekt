@@ -91,10 +91,10 @@ public class Projekt_MMM extends Okno {
     public double trojkat(double amplituda, double okres, double t, double T, double i){
         double tr;
         int cykl = (int) (i/(okres/T) );
-        if(i<=((okres/2*T)+ (cykl)*(okres/(T))) & i >= cykl*(okres/T))
-        tr=((amplituda*2*(i-cykl*okres)*T)/okres); 
+        if(i <= ((okres/(2*T)) + (cykl)*(okres/(T))) & i >= cykl*(okres/T))
+        tr=((amplituda*2*(i*T-cykl*okres))/okres); 
         else 
-        tr=(amplituda*2-((amplituda*2*(i-cykl*okres)*T)/okres));
+        tr=(amplituda*2-((amplituda*2*(i*T-cykl*okres))/okres));
         return tr;
     }
     
